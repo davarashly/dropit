@@ -3,9 +3,9 @@
 #### Welcome to Dropit's Frontend Test
 
 ### Disclaimers
-* The stacks for this task are similar to the ones we're using here at Dropit (React with Typescript) 
+
+* The stack for this task are similar to the ones we're using here at Dropit (React with Typescript) 
 * The architecture as well (simple implementation)  
-* Some features for this task are optional
 * you can add and modify the given architecture, or implement a different architecture of your choosing
 
 ### Guidelines
@@ -29,12 +29,12 @@
     * display the cart icon with a badge counter for the number of items (not products) in the cart
     * display "No Results" for an empty table
       
-* #### Product page/modal
-    * set up new page/modal and module (use existing configuration)
-    * get product extended data by id (send request to BE)
+* #### Product page
+    * set up new page and module (use existing configuration)
+    * handle page refresh
     * display all product extended data
     * display the cart icon with a badge counter for the number of items (not products) in the cart
-    * add and handle back/close button
+    * add and handle back button
       
 * #### Cart page
     * set up new page and module (use existing configuration)
@@ -42,6 +42,6 @@
     * show summary data (number of products, number of items, total price)
     * add input for user's name
     * add a checkout button (disabled when cart or user's name is empty)
-    * post checkout request with the quantity of each product that are in the cart
+    * handle checkout by displaying successful snackbar/modal with a message
     * display a successful message when done
     * add and handle back/close button
