@@ -42,6 +42,5 @@
     * show summary data (number of products, number of items, total price)
     * add input for user's name
     * add a checkout button (disabled when cart or user's name is empty)
-    * handle checkout by displaying successful snackbar/modal with a message
-    * display a successful message when done
+    * handle checkout by displaying a successful snackbar/modal with a message
     * add and handle back/close button
