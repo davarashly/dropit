@@ -1,32 +1,17 @@
-import Axios from "axios";
-
-import { CatalogProduct, ProductDetails } from "../../modules/product/types";
-
-const AxiosClient = Axios.create({
-  baseURL: "http://localhost:8080/catalog",
-});
+import {CatalogProduct} from "../../modules/product/types";
 
 const API = {
-  product: {
-    getById: async (productId: number): Promise<ProductDetails> =>
-      AxiosClient.get<ProductDetails>(`/products/${productId}`).then(
-        (response) => response.data
-      ),
-    getAll: async (): Promise<CatalogProduct[]> =>
-      AxiosClient.get<CatalogProduct[]>(`/products`).then(
-        (response) => response.data
-      ),
-  },
-  category: {
-    getAll: async (): Promise<string[]> =>
-      AxiosClient.get<string[]>(`/categories`).then(
-        (response) => response.data
-      ),
-  },
-  cart: {
-    postCheckout: async (cartData: Record<number, number>): Promise<void> =>
-      AxiosClient.post(`/checkout`, cartData),
-  },
+	product: {
+		getAll: async (): Promise<CatalogProduct[]> =>
+			fetch("db/products.json", {
+				headers: {
+					'Content-Type': 'application/json',
+					'Accept': 'application/json'
+				}
+			}).then(
+				(response) => response.json()
+			),
+	},
 };
 
-export { API };
+export {API};
