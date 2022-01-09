@@ -25,7 +25,7 @@
     * add search input that filter the displayed data by product's name (search is done locally)
     * add sort functionality by any property (sort is done locally)
     * handle add product to cart
-    * handle click row (navigate to product page or open product modal)
+    * handle click row (navigate to product page)
     * display the cart icon with a badge counter for the number of items (not products) in the cart
     * display "No Results" for an empty table
       
