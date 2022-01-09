@@ -1,6 +1,6 @@
 ![Dropit](src/tools/assets/logo-dropit-business.svg)
 
-#### Welcome to Dropit's Fullstack Test
+#### Welcome to Dropit's Frontend Test
 
 ### Disclaimers
 * The stacks for this task are similar to the ones we're using here at Dropit (React with Typescript) 

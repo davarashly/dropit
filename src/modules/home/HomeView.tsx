@@ -13,7 +13,7 @@ const HomeView = () => {
         <img src={DropitLogo} alt="logo" />
 
         <div className="HomeView__header_title">
-          {"Welcome To Dropit's Fullstack test project"}
+          {"Welcome To Dropit's Frontend test project"}
         </div>
 
         <Link to={routesApp.getCatalog()}>Continue to Catalog</Link>
