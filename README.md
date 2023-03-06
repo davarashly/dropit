@@ -11,7 +11,7 @@
 ### Guidelines
 
 * Keep code clean and organized
-* Please showcase your knowladge of best practices and your understanding of React in this assignment
+* Please showcase your knowledge of best practices and your understanding of React in this assignment
 * Submit the task via mail or a private repo
 
 ## Design
