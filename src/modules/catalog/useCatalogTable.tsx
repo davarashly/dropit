@@ -14,11 +14,6 @@ function useCatalogTable({ onAddItem }: Props) {
   const columns: TableColumn<CatalogProduct>[] = useMemo(
     () => [
       {
-        key: "id",
-        title: "ID",
-        renderCell: (item) => <a>{item.id}</a>,
-      },
-      {
         key: "image",
         title: "Image",
         renderCell: (item) => (
@@ -28,6 +23,11 @@ function useCatalogTable({ onAddItem }: Props) {
             style={{ width: 60, objectFit: "contain" }}
           />
         ),
+      },
+      {
+        key: "id",
+        title: "ID",
+        renderCell: (item) => <a>{item.id}</a>,
       },
       {
         key: "title",

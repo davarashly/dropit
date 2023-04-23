@@ -25,8 +25,8 @@ function Table<Item>({ data, columns, getKeyRow }: Props<Item>) {
         <TableHead>
           <TableRow>
             {columns.map(({ key, title, width }) => (
-              <TableCell key={key.toString()} width={width}>
-                {title}
+              <TableCell key={key.toString()} width={width} isHeader={true}>
+               <b>{title}</b>
               </TableCell>
             ))}
           </TableRow>

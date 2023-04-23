@@ -1,15 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
 
 import "./index.css";
 
 import AppRouter from "./contexts/navigation/AppRouter";
+import { store } from "./tools/store";
+import { Header } from "./tools/ui_components";
 
 const App = () => {
   return (
-    <div>
+    <Provider store={store}>
+      <Header />
       <AppRouter />
-    </div>
+    </Provider>
   );
 };
 

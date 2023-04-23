@@ -7,12 +7,15 @@ import { CatalogProduct } from "../product/types";
 
 import useCatalogTable from "./useCatalogTable";
 
+import { addProduct, store } from "../../tools/store";
+
 const useCatalog = () => {
   const [products, setProducts] = useState<CatalogProduct[]>([]);
   const [isLoading, onStartLoading, onEndLoading] = useFlag(true);
 
   const handleAddProductToCart = useCallback((product: CatalogProduct) => {
-    // TODO
+    store.dispatch(addProduct(product));
+
     console.log("handleAddProductToCart");
     console.log("product", product);
   }, []);
