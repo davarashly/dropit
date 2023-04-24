@@ -11,6 +11,9 @@
     font-family: var(--font-family);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+*:not(a) {
     color: #565C70;
 }
 

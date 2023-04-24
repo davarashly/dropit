@@ -20,13 +20,13 @@ interface Props<Item> {
 
 function Table<Item>({ data, columns, getKeyRow }: Props<Item>) {
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} style={{ padding: "1rem 2rem" }}>
       <MaterialTable aria-label="simple table">
         <TableHead>
           <TableRow>
             {columns.map(({ key, title, width }) => (
               <TableCell key={key.toString()} width={width} isHeader={true}>
-               <b>{title}</b>
+                <b>{title}</b>
               </TableCell>
             ))}
           </TableRow>

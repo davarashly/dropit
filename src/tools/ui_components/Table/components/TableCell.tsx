@@ -12,10 +12,10 @@ const TableCell: FC<Props> = ({ width, isHeader, children }) => {
       style={{
         height: "100%",
         width,
-        paddingInline: 4,
         color: isHeader ? "#565C70" : "#909090",
         letterSpacing: 0.5,
         fontFamily: "var(--font-family)",
+        borderColor: "#F5F5F5",
       }}
     >
       {children}
