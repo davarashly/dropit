@@ -2,9 +2,9 @@ import { Tooltip } from "@mui/material";
 import React, { useCallback, useMemo } from "react";
 
 import { GetKeyRow, TableColumn } from "../../tools/ui_components/Table/types";
-import { AddToCartIcon } from "../../tools/icons";
 
 import { CatalogProduct } from "../product/types";
+import { AddToCartIconForwarded } from "../../tools/icons/IconAddToCart";
 
 interface Props {
   onAddItem: (item: CatalogProduct) => void;
@@ -16,36 +16,48 @@ function useCatalogTable({ onAddItem }: Props) {
       {
         key: "image",
         title: "Image",
+        width: "22%",
         renderCell: (item) => (
           <img
             alt=""
             src={item.image}
-            style={{ width: 60, objectFit: "contain" }}
+            className="CatalogView__grid_productImage"
           />
         ),
       },
       {
         key: "id",
         title: "ID",
-        renderCell: (item) => <a>{item.id}</a>,
+        width: "22%",
+        renderCell: (item) => <span className="gray-color">{item.id}</span>,
       },
       {
         key: "title",
         title: "Title",
-        renderCell: (item) => <a>{item.title}</a>,
+        width: "22%",
+        renderCell: (item) => <span className="gray-color">{item.title}</span>,
       },
       {
         key: "price",
         title: "Price",
-        renderCell: (item) => <a>{item.price}</a>,
+        width: "22%",
+        renderCell: (item) => (
+          <span className="gray-color">${item.price.toFixed(2)}</span>
+        ),
       },
       {
         key: "action",
         title: "",
+        width: "12%",
         renderCell: (item) => (
-          <div style={{ cursor: "pointer" }} onClick={() => onAddItem(item)}>
+          <div
+            className="CatalogView__grid_addToCart"
+            onClick={() => onAddItem(item)}
+          >
             <Tooltip title={"Add to Cart"}>
-              <AddToCartIcon />
+              <div>
+                <AddToCartIconForwarded />
+              </div>
             </Tooltip>
           </div>
         ),

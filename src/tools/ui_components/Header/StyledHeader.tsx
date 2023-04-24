@@ -20,8 +20,8 @@ const StyledHeader = styled.header`
     margin: 0;
     padding: 0 .285rem;
     position: absolute;
-    top: -3px;
-    left: .9rem;
+    top: -6.5px;
+    left: .7rem;
   }
 `;
 

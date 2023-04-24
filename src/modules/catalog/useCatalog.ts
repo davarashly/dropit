@@ -16,8 +16,8 @@ const useCatalog = () => {
   const handleAddProductToCart = useCallback((product: CatalogProduct) => {
     store.dispatch(addProduct(product));
 
-    console.log("handleAddProductToCart");
-    console.log("product", product);
+    // console.log("handleAddProductToCart");
+    // console.log("product", product);
   }, []);
 
   const { columns, getKeyRow } = useCatalogTable({
@@ -26,7 +26,17 @@ const useCatalog = () => {
 
   useEffect(
     () => {
-      API.product.getAll().then(setProducts).finally(onEndLoading);
+      API.product
+        .getAll()
+        .then((products) =>
+          setProducts(
+            products.map((p) => ({
+              ...p,
+              // title: "Men black T-shirt",
+            }))
+          )
+        )
+        .finally(onEndLoading);
     },
     [] // eslint-disable-line
   );

@@ -1,7 +1,7 @@
 export interface TableColumn<Item> {
   key: keyof Item | string;
   title: string;
-  width?: number;
+  width?: string | number;
   renderCell: (item: Item) => JSX.Element;
 }
 

@@ -1,18 +1,33 @@
 import React from "react";
 
 interface Props {
-  d: string;
+  d: string | string[];
+  width?: number;
+  height?: number;
+  color?: string;
 }
 
-const IconComponent = ({ d }: Props) => {
+const IconComponent = ({
+  d,
+  width: widthProp,
+  height: heightProp,
+  color,
+}: Props) => {
+  const width = typeof widthProp === "number" ? widthProp : 18;
+  const height = typeof heightProp === "number" ? heightProp : 18;
+  const paths = Array.isArray(d) ? d : [d];
+
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
+      width={width}
+      height={height}
+      viewBox={`0 0 ${width} ${height}`}
+      fill={color || "currentColor"}
     >
-      <path d={d} />
+      {paths.map((d) => (
+        <path key={d} d={d} />
+      ))}
     </svg>
   );
 };

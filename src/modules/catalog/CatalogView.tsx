@@ -4,17 +4,21 @@ import { LoadingSpinner, Table } from "../../tools/ui_components";
 
 import useCatalog from "./useCatalog";
 import StyledCatalogView from "./StyledCatalogView";
-
-import SearchIcon from "../../tools/assets/search.svg";
+import { SearchIcon } from "../../tools/icons";
+import useWindow from "../../tools/hooks/useWindow";
+import MobileTable from "../../tools/ui_components/MobileTable";
 
 const CatalogView = () => {
   const { isLoading, products, columns, getKeyRow } = useCatalog();
+  const { windowWidth } = useWindow();
 
   const [search, setSearch] = useState<string>("");
 
   const renderedProducts = search.length
     ? products.filter(
-        (p) => p.title.toLowerCase().includes(search) || p.id.toString().includes(search)
+        (p) =>
+          p.title.toLowerCase().includes(search) ||
+          p.id.toString().includes(search)
       )
     : products;
 
@@ -26,7 +30,7 @@ const CatalogView = () => {
         </div>
 
         <div className="CatalogView__search">
-          <img src={SearchIcon} alt="" />
+          <SearchIcon color={"#909090"} />
           <input
             type="text"
             placeholder="Search item"
@@ -35,9 +39,16 @@ const CatalogView = () => {
             className={search.length ? "notEmpty" : ""}
           />
         </div>
-
         <div className="CatalogView__grid">
-          <Table columns={columns} data={renderedProducts} getKeyRow={getKeyRow} />
+          {windowWidth >= 905 ? (
+            <Table
+              columns={columns}
+              data={renderedProducts}
+              getKeyRow={getKeyRow}
+            />
+          ) : (
+            <MobileTable data={renderedProducts} />
+          )}
         </div>
 
         <LoadingSpinner isVisible={isLoading} />

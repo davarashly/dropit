@@ -2,11 +2,12 @@ import { TableCell as MaterialTableCell } from "@mui/material";
 import React, { FC } from "react";
 
 interface Props {
-  width?: number;
+  width?: string | number;
   isHeader?: boolean;
+  style?: React.CSSProperties;
 }
 
-const TableCell: FC<Props> = ({ width, isHeader, children }) => {
+const TableCell: FC<Props> = ({ width, isHeader, children, style }) => {
   return (
     <MaterialTableCell
       style={{
@@ -16,6 +17,8 @@ const TableCell: FC<Props> = ({ width, isHeader, children }) => {
         letterSpacing: 0.5,
         fontFamily: "var(--font-family)",
         borderColor: "#F5F5F5",
+        padding: "16px 10px",
+        ...style,
       }}
     >
       {children}

@@ -20,7 +20,7 @@ interface Props<Item> {
 
 function Table<Item>({ data, columns, getKeyRow }: Props<Item>) {
   return (
-    <TableContainer component={Paper} style={{ padding: "1rem 2rem" }}>
+    <TableContainer component={Paper}>
       <MaterialTable aria-label="simple table">
         <TableHead>
           <TableRow>
@@ -33,10 +33,16 @@ function Table<Item>({ data, columns, getKeyRow }: Props<Item>) {
         </TableHead>
 
         <TableBody>
-          {data.map((item) => (
+          {data.map((item, rowIdx) => (
             <TableRow key={getKeyRow(item)}>
               {columns.map(({ key, width, renderCell }) => (
-                <TableCell key={key.toString()} width={width}>
+                <TableCell
+                  key={key.toString()}
+                  width={width}
+                  style={{
+                    backgroundColor: rowIdx % 2 ? undefined : "#fcfcfc",
+                  }}
+                >
                   {renderCell(item)}
                 </TableCell>
               ))}
