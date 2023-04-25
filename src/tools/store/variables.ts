@@ -1,2 +1,3 @@
 export const DB_NAME = "cartDB";
-export const STORE_NAME = "cartStore";
+export const CART_STORE_NAME = "cartStore";
+export const PRODUCTS_STORE_NAME = "productsStore";

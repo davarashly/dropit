@@ -5,12 +5,9 @@ import { LoadingSpinner, Table } from "../../tools/ui_components";
 import useCatalog from "./useCatalog";
 import StyledCatalogView from "./StyledCatalogView";
 import { SearchIcon } from "../../tools/icons";
-import useWindow from "../../tools/hooks/useWindow";
-import MobileTable from "../../tools/ui_components/MobileTable";
 
 const CatalogView = () => {
   const { isLoading, products, columns, getKeyRow } = useCatalog();
-  const { windowWidth } = useWindow();
 
   const [search, setSearch] = useState<string>("");
 
@@ -27,7 +24,7 @@ const CatalogView = () => {
       <div
         className="container"
         style={{
-          display: "flex",
+          display: products.length ? "flex" : "none",
           flexDirection: "column",
           alignItems: "flex-start",
         }}
@@ -47,18 +44,14 @@ const CatalogView = () => {
           />
         </div>
         <div className="CatalogView__grid">
-          {/*{windowWidth >= 905 ? (*/}
           <Table
             columns={columns}
             data={renderedProducts}
             getKeyRow={getKeyRow}
           />
-          {/*) : (*/}
-          {/*  <MobileTable data={renderedProducts} />*/}
-          {/*)}*/}
         </div>
-        <LoadingSpinner isVisible={isLoading} />
       </div>
+      <LoadingSpinner isVisible={isLoading} />
     </StyledCatalogView>
   );
 };

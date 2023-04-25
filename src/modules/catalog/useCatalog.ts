@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 
 import { API } from "../../contexts/api";
 import useFlag from "../../tools/hooks/useFlag";
@@ -7,17 +7,19 @@ import { CatalogProduct } from "../product/types";
 
 import useCatalogTable from "./useCatalogTable";
 
-import { addProduct, store } from "../../tools/store";
+import { addProduct, store, setProducts } from "../../tools/store";
+import { useSelector } from "react-redux";
+import { RootState } from "../../tools/store/types";
 
 const useCatalog = () => {
-  const [products, setProducts] = useState<CatalogProduct[]>([]);
+  const { products } = useSelector<RootState, RootState["products"]>(
+    (s) => s.products
+  );
+
   const [isLoading, onStartLoading, onEndLoading] = useFlag(true);
 
   const handleAddProductToCart = useCallback((product: CatalogProduct) => {
     store.dispatch(addProduct(product));
-
-    // console.log("handleAddProductToCart");
-    // console.log("product", product);
   }, []);
 
   const { columns, getKeyRow } = useCatalogTable({
@@ -26,14 +28,22 @@ const useCatalog = () => {
 
   useEffect(
     () => {
+      if (products.length) {
+        return onEndLoading();
+      }
+
+      onStartLoading();
+
       API.product
         .getAll()
         .then((products) =>
-          setProducts(
-            products.map((p) => ({
-              ...p,
-              // title: "Men black T-shirt",
-            }))
+          store.dispatch(
+            setProducts(
+              products.map((p) => ({
+                ...p,
+                // title: "Men black T-shirt",
+              }))
+            )
           )
         )
         .finally(onEndLoading);

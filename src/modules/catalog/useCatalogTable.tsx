@@ -54,7 +54,7 @@ function useCatalogTable({ onAddItem }: Props) {
             onClick={() => onAddItem(item)}
           >
             <Tooltip title={"Add to Cart"}>
-              <div>
+              <div style={{ display: "flex" }}>
                 <AddToCartIconForwarded />
               </div>
             </Tooltip>

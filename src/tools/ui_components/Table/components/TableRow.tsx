@@ -1,7 +1,5 @@
 import React, { FC } from "react";
 
-import { TableRow as MaterialTableRow } from "@mui/material";
-
 interface Props {
   style?: React.CSSProperties;
   className?: string;

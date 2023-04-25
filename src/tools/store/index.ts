@@ -2,18 +2,36 @@ import {
   createSlice,
   configureStore,
   PayloadAction,
+  combineReducers,
 } from "@reduxjs/toolkit";
 import { CatalogProduct } from "../../modules/product/types";
-import { CartState } from "./types";
+import { CartState, CatalogState } from "./types";
 import { indexedDBMiddleware, loadStateFromIndexedDB } from "./db";
-import { STORE_NAME } from "./variables";
+import { CART_STORE_NAME, PRODUCTS_STORE_NAME } from "./variables";
 
 const initialCartState: CartState = {
   cart: {},
 };
 
-const cartCounterSlice = createSlice({
-  name: STORE_NAME,
+const initialProductsState: CatalogState = {
+  products: [],
+};
+
+const productsSlice = createSlice({
+  name: PRODUCTS_STORE_NAME,
+  initialState: initialProductsState,
+  reducers: {
+    setProducts(
+      state: CatalogState,
+      action: PayloadAction<CatalogState["products"]>
+    ) {
+      state.products = action.payload;
+    },
+  },
+});
+
+const cartSlice = createSlice({
+  name: CART_STORE_NAME,
   initialState: initialCartState,
   reducers: {
     loadFromIndexedDB(state: CartState, action: PayloadAction<CartState>) {
@@ -22,7 +40,10 @@ const cartCounterSlice = createSlice({
     clearCart(state: CartState) {
       state.cart = {};
     },
-    removeProduct(state: CartState, action: PayloadAction<string>) {
+    removeProduct(
+      state: CartState,
+      action: PayloadAction<CatalogProduct["id"]>
+    ) {
       const productId = action.payload;
 
       delete state.cart[productId];
@@ -34,11 +55,12 @@ const cartCounterSlice = createSlice({
         state.cart[product.id] = { product, quantity: 1 };
       }
     },
-    changeAmount(
+    changeQuantity(
       state: CartState,
-      action: PayloadAction<{ productId: string; quantity: number }>
+      action: PayloadAction<{ productId: number | string; quantity: number }>
     ) {
-      const { productId, quantity } = action.payload;
+      let { productId, quantity } = action.payload;
+      quantity = isNaN(quantity) ? 1 : quantity;
 
       if (state.cart[productId]) {
         state.cart[productId].quantity = Math.max(Math.min(quantity, 99), 1);
@@ -47,12 +69,18 @@ const cartCounterSlice = createSlice({
   },
 });
 
-export const cartCounterSliceActions = cartCounterSlice.actions;
-export const { clearCart, removeProduct, addProduct, changeAmount } =
-  cartCounterSliceActions;
+export const cartSliceActions = cartSlice.actions;
+export const { clearCart, removeProduct, addProduct, changeQuantity } =
+  cartSliceActions;
+
+export const productsSliceActions = productsSlice.actions;
+export const { setProducts } = productsSliceActions;
 
 export const store = configureStore({
-  reducer: cartCounterSlice.reducer,
+  reducer: combineReducers({
+    cart: cartSlice.reducer,
+    products: productsSlice.reducer,
+  }),
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(indexedDBMiddleware),
 });
@@ -60,7 +88,7 @@ export const store = configureStore({
 // To load the initial state from IndexedDB
 loadStateFromIndexedDB().then((loadedState) => {
   store.dispatch({
-    type: `${STORE_NAME}/loadFromIndexedDB`,
+    type: `${CART_STORE_NAME}/loadFromIndexedDB`,
     payload: loadedState,
   });
 });

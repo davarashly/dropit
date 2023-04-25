@@ -13,3 +13,8 @@ export interface ProductDetails extends CatalogProduct {
     count: number;
   };
 }
+
+export interface CartDetails {
+  product: CatalogProduct;
+  quantity: number;
+}

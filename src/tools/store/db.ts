@@ -1,7 +1,7 @@
-import { CartState } from "./types";
+import { CartState, RootState } from "./types";
 import { Middleware } from "redux";
-import { cartCounterSliceActions } from "./index";
-import { DB_NAME, STORE_NAME } from "./variables";
+import { cartSliceActions } from "./index";
+import { DB_NAME, CART_STORE_NAME } from "./variables";
 
 const openDB = (): Promise<IDBDatabase> =>
   new Promise((resolve, reject) => {
@@ -12,14 +12,16 @@ const openDB = (): Promise<IDBDatabase> =>
     request.onupgradeneeded = (event: IDBVersionChangeEvent) => {
       const db = (event.target as IDBOpenDBRequest).result;
 
-      db.createObjectStore(STORE_NAME, { keyPath: "id" });
+      db.createObjectStore(CART_STORE_NAME, { keyPath: "id" });
     };
   });
 
 const saveCart = async (cart: CartState["cart"]): Promise<void> => {
   const db = await openDB();
-  const transaction = db.transaction(STORE_NAME, "readwrite");
-  const store = transaction.objectStore(STORE_NAME);
+  const transaction = db.transaction(CART_STORE_NAME, "readwrite");
+  const store = transaction.objectStore(CART_STORE_NAME);
+
+  store.clear();
 
   for (const key in cart) {
     const cartItem = {
@@ -38,8 +40,8 @@ const saveCart = async (cart: CartState["cart"]): Promise<void> => {
 
 const loadCart = async (): Promise<CartState> => {
   const db = await openDB();
-  const transaction = db.transaction(STORE_NAME, "readonly");
-  const store = transaction.objectStore(STORE_NAME);
+  const transaction = db.transaction(CART_STORE_NAME, "readonly");
+  const store = transaction.objectStore(CART_STORE_NAME);
 
   const request = store.getAll();
 
@@ -58,20 +60,20 @@ const loadCart = async (): Promise<CartState> => {
   });
 };
 
-export const indexedDBMiddleware: Middleware<{}, CartState> =
+export const indexedDBMiddleware: Middleware<{}, RootState> =
   (store) => (next) => async (action) => {
     const result = next(action);
 
     if (
-      Object.keys(cartCounterSliceActions)
+      Object.keys(cartSliceActions)
         .map((actionName) =>
           actionName !== "loadFromIndexedDB"
-            ? `${STORE_NAME}/${actionName}`
+            ? `${CART_STORE_NAME}/${actionName}`
             : ""
         )
         .includes(action.type)
     ) {
-      await saveCart(store.getState().cart);
+      await saveCart(store.getState().cart.cart);
     }
 
     return result;

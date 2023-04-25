@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-const StyledCatalogView = styled.div`
+const StyledCartView = styled.div`
   display: flex;
   overflow: hidden;
 
-  .CatalogView__header {
+  .CartView__header {
     display: flex;
     align-items: center;
     border-bottom: 1px solid #c9c9c9;
@@ -12,64 +12,36 @@ const StyledCatalogView = styled.div`
     padding-bottom: 16px;
     width: 100%;
 
-    .CatalogView__header_text {
+    .CartView__header_text {
       font-size: 30px;
       font-weight: bold;
       color: #565c70;
     }
   }
 
-  .CatalogView__search {
-    padding-left: 18px;
-    padding-right: 2px;
+  .wrapper {
+    display: flex;
     overflow: hidden;
-    border: 1px solid #c9c9c9;
-    background-color: #fff;
-    border-radius: 4px;
-    min-height: 37px;
-    display: inline-flex;
-    align-items: center;
+    flex-direction: column;
     width: 100%;
-    margin-top: 24px;
-    transition: border 0.4s;
-
-    &:focus-within {
-      border-color: #909090;
-    }
 
     @media screen and (min-width: 905px) {
-      width: initial;
-    }
-
-    input {
-      margin-left: 0.3rem;
-      outline: none;
-      height: 100%;
-      border: none;
-      font-size: 14px;
-      display: flex;
-      width: calc(100% - 2px);
-
-      @media screen and (min-width: 905px) {
-        transition: width 0.4s;
-        width: 450px;
-        min-width: 450px;
-
-        &:focus,
-        &.notEmpty {
-          width: 622px;
-        }
-      }
+      flex-direction: row;
     }
   }
 
-  .CatalogView__grid {
-    width: 100%;
+  .CartView__grid {
+    &:not(.checkout) {
+      @media screen and (min-width: 905px) {
+        width: 65.5%;
+        margin-right: 1rem;
+      }
+    }
 
     ::-webkit-scrollbar {
       width: 4px;
     }
- 
+
     ::-webkit-scrollbar-track {
       background: #fff;
     }
@@ -78,14 +50,22 @@ const StyledCatalogView = styled.div`
       border-radius: 10px;
       background: #909090;
     }
-    
+
     ::-webkit-scrollbar-thumb:hover {
       background: #555;
     }
 
+
     margin-top: 24px;
     line-height: 150%;
     overflow: auto;
+
+    &.checkout {
+      padding: 0.35rem 1.4rem 0;
+      border: 1px solid #c9c9c9;
+      border-radius: 4px;
+      background-color: #fff;
+    }
 
     @media screen and  (min-width: 905px) {
       padding: 0.35rem 1.4rem 0;
@@ -94,12 +74,12 @@ const StyledCatalogView = styled.div`
       background-color: #fff;
     }
 
-    .CatalogView__grid_productImage {
-      max-width: 35px;
+    .CartView__grid_productImage {
+      max-width: 65px;
       object-fit: contain;
     }
 
-    .CatalogView__grid_addToCart {
+    .CartView__grid_addToCart {
       opacity: 1;
       cursor: pointer;
       display: flex;
@@ -118,4 +98,4 @@ const StyledCatalogView = styled.div`
   }
 `;
 
-export default StyledCatalogView;
+export default StyledCartView;

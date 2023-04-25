@@ -1,4 +1,3 @@
-import { TableCell as MaterialTableCell } from "@mui/material";
 import React, { FC } from "react";
 
 interface Props {

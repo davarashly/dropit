@@ -34,7 +34,7 @@ input::placeholder {
 header {
     position: sticky;
     top: 0;
-    z-index: 9999;
+    z-index: 9;
 }
 
 body,
@@ -101,6 +101,10 @@ code {
 }
 
 @media screen and  (min-width: 905px) {
+    .only-gadget {
+        display: none !important;
+    }
+
     .only-desktop {
         display: flex !important;
     }

@@ -4,11 +4,15 @@ import StyledHeader from "./StyledHeader";
 import Cart from "./components/Cart";
 
 import logo from "../../assets/logo.svg";
+import pathsApp from "../../../contexts/navigation/pathsApp";
+import { Link } from "react-router-dom";
 
 const Header: FC = () => {
   return (
     <StyledHeader>
-      <img src={logo} alt="" />
+      <Link to={pathsApp.catalog}>
+        <img src={logo} alt="" />
+      </Link>
       <Cart />
     </StyledHeader>
   );
