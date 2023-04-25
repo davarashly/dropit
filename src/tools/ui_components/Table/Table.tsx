@@ -20,37 +20,46 @@ interface Props<Item> {
 
 function Table<Item>({ data, columns, getKeyRow }: Props<Item>) {
   return (
-    <TableContainer component={Paper}>
-      <MaterialTable aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            {columns.map(({ key, title, width }) => (
-              <TableCell key={key.toString()} width={width} isHeader={true}>
-                <b>{title}</b>
-              </TableCell>
-            ))}
-          </TableRow>
-        </TableHead>
+    <div className="table">
+      <TableRow className="only-desktop header">
+        {columns.map(({ key, title, width }) => (
+          <TableCell key={key.toString()} width={width} isHeader={true}>
+            <b>{title}</b>
+          </TableCell>
+        ))}
+      </TableRow>
 
-        <TableBody>
-          {data.map((item, rowIdx) => (
-            <TableRow key={getKeyRow(item)}>
-              {columns.map(({ key, width, renderCell }) => (
-                <TableCell
-                  key={key.toString()}
-                  width={width}
-                  style={{
-                    backgroundColor: rowIdx % 2 ? undefined : "#fcfcfc",
-                  }}
-                >
+      {data.map((item, rowIdx) => (
+        <TableRow key={getKeyRow(item)}>
+          {columns.map(({ key, width, renderCell }, index) => {
+            if (index === 1) {
+              return (
+                <div className="wrap" key={index}>
+                  {columns
+                    .slice(1, columns.length - 1)
+                    .map((innerElement, innerIndex) => (
+                      <TableCell
+                        key={innerElement.key.toString()}
+                        width={width}
+                      >
+                        {innerElement.renderCell(item)}
+                      </TableCell>
+                    ))}
+                </div>
+              );
+            } else if (index === 0 || index === 4) {
+              return (
+                <TableCell key={key.toString()} width={width}>
                   {renderCell(item)}
                 </TableCell>
-              ))}
-            </TableRow>
-          ))}
-        </TableBody>
-      </MaterialTable>
-    </TableContainer>
+              );
+            } else {
+              return null;
+            }
+          })}
+        </TableRow>
+      ))}
+    </div>
   );
 }
 

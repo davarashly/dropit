@@ -17,14 +17,21 @@ const CatalogView = () => {
   const renderedProducts = search.length
     ? products.filter(
         (p) =>
-          p.title.toLowerCase().includes(search) ||
+          p.title.toLowerCase().includes(search.toLowerCase().trim()) ||
           p.id.toString().includes(search)
       )
     : products;
 
   return (
-    <div className="container">
-      <StyledCatalogView>
+    <StyledCatalogView>
+      <div
+        className="container"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
+        }}
+      >
         <div className="CatalogView__header">
           <div className="CatalogView__header_text">Catalog Page</div>
         </div>
@@ -40,20 +47,19 @@ const CatalogView = () => {
           />
         </div>
         <div className="CatalogView__grid">
-          {windowWidth >= 905 ? (
-            <Table
-              columns={columns}
-              data={renderedProducts}
-              getKeyRow={getKeyRow}
-            />
-          ) : (
-            <MobileTable data={renderedProducts} />
-          )}
+          {/*{windowWidth >= 905 ? (*/}
+          <Table
+            columns={columns}
+            data={renderedProducts}
+            getKeyRow={getKeyRow}
+          />
+          {/*) : (*/}
+          {/*  <MobileTable data={renderedProducts} />*/}
+          {/*)}*/}
         </div>
-
         <LoadingSpinner isVisible={isLoading} />
-      </StyledCatalogView>
-    </div>
+      </div>
+    </StyledCatalogView>
   );
 };
 

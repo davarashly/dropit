@@ -16,7 +16,6 @@ function useCatalogTable({ onAddItem }: Props) {
       {
         key: "image",
         title: "Image",
-        width: "22%",
         renderCell: (item) => (
           <img
             alt=""
@@ -28,19 +27,20 @@ function useCatalogTable({ onAddItem }: Props) {
       {
         key: "id",
         title: "ID",
-        width: "22%",
         renderCell: (item) => <span className="gray-color">{item.id}</span>,
       },
       {
         key: "title",
         title: "Title",
-        width: "22%",
-        renderCell: (item) => <span className="gray-color">{item.title}</span>,
+        renderCell: (item) => (
+          <span style={{ width: "80%" }} className="gray-color">
+            {item.title}
+          </span>
+        ),
       },
       {
         key: "price",
         title: "Price",
-        width: "22%",
         renderCell: (item) => (
           <span className="gray-color">${item.price.toFixed(2)}</span>
         ),
@@ -48,7 +48,6 @@ function useCatalogTable({ onAddItem }: Props) {
       {
         key: "action",
         title: "",
-        width: "12%",
         renderCell: (item) => (
           <div
             className="CatalogView__grid_addToCart"

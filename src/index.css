@@ -53,8 +53,17 @@ code {
 
 #root {
     height: 100vh;
-    overflow-y: auto;
-    overflow-x: hidden;
+    padding-bottom: 2rem;
+    overflow: auto;
+}
+
+@media screen and (min-width: 905px) {
+    #root {
+        max-height: 100vh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 .container {
@@ -93,7 +102,7 @@ code {
 
 @media screen and  (min-width: 905px) {
     .only-desktop {
-        display: block !important;
+        display: flex !important;
     }
 }
 
