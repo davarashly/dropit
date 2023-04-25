@@ -5,7 +5,7 @@ const StyledCheckout = styled.div`
     padding: 24px;
 
     &:not(:last-child) {
-      border-bottom: 1px solid #C9C9C9;
+      border-bottom: 1px solid var(--grey2);
     }
   }
 
@@ -17,7 +17,7 @@ const StyledCheckout = styled.div`
     font-weight: bold;
 
     &.border {
-      border-bottom: 1px solid #F5F5F5;
+      border-bottom: 1px solid var(--grey3);
       padding-bottom: 22.5px;
     }
   }
@@ -30,10 +30,10 @@ const StyledCheckout = styled.div`
   }
 
   button {
-    margin-top: 1rem;
+    margin-top: 16px;
     display: block;
     color: #fff;
-    background-color: #00B588;
+    background-color: var(--green);
     border-radius: 4px;
     outline: none;
     border: none;
@@ -51,7 +51,7 @@ const StyledCheckout = styled.div`
     }
 
     &:disabled {
-      background-color: #3ACEA9;
+      background-color: var(--green-disabled);
     }
   }
 `;

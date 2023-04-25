@@ -34,7 +34,7 @@ const CatalogView = () => {
         </div>
 
         <div className="CatalogView__search">
-          <SearchIcon color={"#909090"} />
+          <SearchIcon color={"var(--grey1)"} />
           <input
             type="text"
             placeholder="Search item"

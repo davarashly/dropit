@@ -7,7 +7,7 @@ const StyledCatalogView = styled.div`
   .CatalogView__header {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #c9c9c9;
+    border-bottom: 1px solid var(--grey2);
     margin-top: 34px;
     padding-bottom: 16px;
     width: 100%;
@@ -15,7 +15,7 @@ const StyledCatalogView = styled.div`
     .CatalogView__header_text {
       font-size: 30px;
       font-weight: bold;
-      color: #565c70;
+      color: var(--grey-blue);
     }
   }
 
@@ -23,7 +23,7 @@ const StyledCatalogView = styled.div`
     padding-left: 18px;
     padding-right: 2px;
     overflow: hidden;
-    border: 1px solid #c9c9c9;
+    border: 1px solid var(--grey2);
     background-color: #fff;
     border-radius: 4px;
     min-height: 37px;
@@ -34,7 +34,7 @@ const StyledCatalogView = styled.div`
     transition: border 0.4s;
 
     &:focus-within {
-      border-color: #909090;
+      border-color: var(--grey1);
     }
 
     @media screen and (min-width: 905px) {
@@ -76,7 +76,7 @@ const StyledCatalogView = styled.div`
 
     ::-webkit-scrollbar-thumb {
       border-radius: 10px;
-      background: #909090;
+      background: var(--grey1);
     }
     
     ::-webkit-scrollbar-thumb:hover {
@@ -85,11 +85,12 @@ const StyledCatalogView = styled.div`
 
     margin-top: 24px;
     line-height: 150%;
+    letter-spacing: 0.5px;
     overflow: auto;
 
     @media screen and  (min-width: 905px) {
       padding: 0.35rem 1.4rem 0;
-      border: 1px solid #c9c9c9;
+      border: 1px solid var(--grey2);
       border-radius: 4px;
       background-color: #fff;
     }

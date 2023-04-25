@@ -93,9 +93,11 @@ loadStateFromIndexedDB().then((loadedState) => {
   });
 });
 
-store.subscribe(() => {
-  // For debug
-  console.group("Store was updated:");
-  console.log(store.getState());
-  console.groupEnd();
-});
+// For debug
+if (process?.env?.NODE_ENV === "development") {
+  store.subscribe(() => {
+    console.group("Store was updated:");
+    console.log(store.getState());
+    console.groupEnd();
+  });
+}

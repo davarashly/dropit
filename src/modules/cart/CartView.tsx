@@ -5,6 +5,8 @@ import { Table } from "../../tools/ui_components";
 import useCart from "./useCart";
 import StyledCartView from "./StyledCartView";
 import Checkout from "../../tools/ui_components/Checkout";
+import ModalWindow from "../../tools/ui_components/ModalWindow";
+import useFlag from "../../tools/hooks/useFlag";
 
 const CartView = () => {
   const { cart, columns, getKeyRow } = useCart();
@@ -18,8 +20,11 @@ const CartView = () => {
   const shippingPrice: number = 0;
   const total = subTotal + shippingPrice;
 
+  const [isVisible, showModal, hideModal] = useFlag(false);
+
   return (
     <StyledCartView>
+      <ModalWindow isVisible={isVisible} hideModal={hideModal} />
       <div
         className="container"
         style={{
@@ -53,6 +58,7 @@ const CartView = () => {
               subTotal={subTotal}
               total={total}
               disabled={!data.length}
+              showModal={showModal}
             />
           </div>
         </div>

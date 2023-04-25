@@ -7,7 +7,7 @@ const StyledCartView = styled.div`
   .CartView__header {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #c9c9c9;
+    border-bottom: 1px solid var(--grey2);
     margin-top: 34px;
     padding-bottom: 16px;
     width: 100%;
@@ -15,7 +15,7 @@ const StyledCartView = styled.div`
     .CartView__header_text {
       font-size: 30px;
       font-weight: bold;
-      color: #565c70;
+      color: var(--grey-blue);
     }
   }
 
@@ -34,7 +34,7 @@ const StyledCartView = styled.div`
     &:not(.checkout) {
       @media screen and (min-width: 905px) {
         width: 65.5%;
-        margin-right: 1rem;
+        margin-right: 16px;
       }
     }
 
@@ -48,7 +48,7 @@ const StyledCartView = styled.div`
 
     ::-webkit-scrollbar-thumb {
       border-radius: 10px;
-      background: #909090;
+      background: var(--grey1);
     }
 
     ::-webkit-scrollbar-thumb:hover {
@@ -58,18 +58,19 @@ const StyledCartView = styled.div`
 
     margin-top: 24px;
     line-height: 150%;
+    letter-spacing: 0.5px;
     overflow: auto;
 
     &.checkout {
       padding: 0.35rem 1.4rem 0;
-      border: 1px solid #c9c9c9;
+      border: 1px solid var(--grey2);
       border-radius: 4px;
       background-color: #fff;
     }
 
     @media screen and  (min-width: 905px) {
       padding: 0.35rem 1.4rem 0;
-      border: 1px solid #c9c9c9;
+      border: 1px solid var(--grey2);
       border-radius: 4px;
       background-color: #fff;
     }

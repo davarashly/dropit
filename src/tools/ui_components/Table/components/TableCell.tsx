@@ -12,7 +12,7 @@ const TableCell: FC<Props> = ({ width, isHeader, children, style }) => {
       className="table-cell"
       style={{
         width,
-        color: isHeader ? "#565C70" : "#909090",
+        color: isHeader ? "var(--grey-blue)" : "var(--grey1)",
         ...style,
       }}
     >

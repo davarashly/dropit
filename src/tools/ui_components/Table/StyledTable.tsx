@@ -3,18 +3,18 @@ import styled from "styled-components";
 const StyledTable = styled.div`
   .table-row {
     align-items: flex-start;
-    padding: 1rem;
-    border: 1px solid #c9c9c9;
+    padding: 16px;
+    border: 1px solid var(--grey2);
     border-radius: 4px;
     background-color: #fff;
 
     &:not(:last-child) {
-      margin-bottom: 0.5rem;
+      margin-bottom: 8px;
     }
 
     @media screen and (min-width: 905px) {
       border: none;
-      border-bottom: 1px solid #f5f5f5;
+      border-bottom: 1px solid var(--grey3);
       margin-top: 0;
 
       &.header {
@@ -29,14 +29,14 @@ const StyledTable = styled.div`
           top: 0;
           left: 0;
           width: 100%;
-          height: 1rem;
+          height: 16px;
           background: #fff;
           transform: translateY(-50%);
         }
       }
 
       &:nth-child(2n) {
-        background-color: #fcfcfc;
+        background-color: var(--grey4);
       }
     }
 

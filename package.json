@@ -32,7 +32,7 @@
     "prettier": "^2.5.1"
   },
   "scripts": {
-    "start": "react-scripts --openssl-legacy-provider start",
+    "start": "react-scripts start",
     "lint": "./node_modules/.bin/eslint --fix src",
     "lint:ci": "./node_modules/.bin/eslint src",
     "build": "react-scripts build",

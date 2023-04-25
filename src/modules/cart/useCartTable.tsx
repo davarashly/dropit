@@ -74,7 +74,7 @@ function useCartTable({ onRemoveItem, onChangeQuantity }: Props) {
           <b
             className="only-desktop"
             style={{
-              whiteSpace: "nowrap",
+              position: "absolute",
             }}
           >
             $ {(product.price * quantity).toFixed(2)}
