@@ -60,7 +60,12 @@ function useCartTable({ onRemoveItem, onChangeQuantity }: Props) {
             />
             <b
               className="only-gadget"
-              style={{ position: "absolute", bottom: 0, right: -35 }}
+              style={{
+                position: "absolute",
+                bottom: 0,
+                right: -35,
+                whiteSpace: "nowrap",
+              }}
             >
               Total: ${(product.price * quantity).toFixed(2)}
             </b>
@@ -75,6 +80,7 @@ function useCartTable({ onRemoveItem, onChangeQuantity }: Props) {
             className="only-desktop"
             style={{
               position: "absolute",
+              whiteSpace: "nowrap",
             }}
           >
             $ {(product.price * quantity).toFixed(2)}

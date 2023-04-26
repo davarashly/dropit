@@ -77,7 +77,7 @@ const StyledTable = styled.div`
       letter-spacing: 0.5;
       padding: 4px 10px;
       font-size: 14px;
-      //overflow-wrap: anywhere;
+      position: relative;
 
       @media screen and (min-width: 905px) {
         flex: 1 1 calc(95% / var(--columns));
