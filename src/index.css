@@ -126,7 +126,7 @@ code {
     width: 100vw;
     bottom: initial;
     right: 0;
-    top: 0;
+    top: 20px;
   }
 
   .Toastify__toast {
