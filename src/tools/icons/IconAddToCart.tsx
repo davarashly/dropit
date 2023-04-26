@@ -2,7 +2,7 @@ import React, { FC } from "react";
 
 import IconComponent from "./components/IconComponent";
 
-const AddToCartIcon: FC = (props) => {
+const AddToCartIcon: FC = () => {
   return (
     <IconComponent
       d={[
@@ -18,7 +18,7 @@ const AddToCartIcon: FC = (props) => {
   );
 };
 
-const AddToCartIconForwarded = React.forwardRef((props, ref) => (
+const AddToCartIconForwarded = React.forwardRef((props) => (
   <AddToCartIcon {...props} />
 ));
 

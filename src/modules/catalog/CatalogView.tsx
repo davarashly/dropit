@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 
 import { LoadingSpinner, Table } from "../../tools/ui_components";
 
@@ -6,7 +6,7 @@ import useCatalog from "./useCatalog";
 import StyledCatalogView from "./StyledCatalogView";
 import { SearchIcon } from "../../tools/icons";
 
-const CatalogView = () => {
+const CatalogView: FC = () => {
   const { isLoading, products, columns, getKeyRow } = useCatalog();
 
   const [search, setSearch] = useState<string>("");

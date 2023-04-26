@@ -69,7 +69,7 @@ const StyledCatalogView = styled.div`
     ::-webkit-scrollbar {
       width: 4px;
     }
- 
+
     ::-webkit-scrollbar-track {
       background: #fff;
     }
@@ -78,7 +78,7 @@ const StyledCatalogView = styled.div`
       border-radius: 10px;
       background: var(--grey1);
     }
-    
+
     ::-webkit-scrollbar-thumb:hover {
       background: #555;
     }
@@ -88,7 +88,7 @@ const StyledCatalogView = styled.div`
     letter-spacing: 0.5px;
     overflow: auto;
 
-    @media screen and  (min-width: 905px) {
+    @media screen and (min-width: 905px) {
       padding: 0.35rem 1.4rem 0;
       border: 1px solid var(--grey2);
       border-radius: 4px;
@@ -107,7 +107,7 @@ const StyledCatalogView = styled.div`
       justify-content: center;
       align-items: center;
 
-      @media screen and  (min-width: 905px) {
+      @media screen and (min-width: 905px) {
         opacity: 0.75;
         transition: opacity 0.18s;
 

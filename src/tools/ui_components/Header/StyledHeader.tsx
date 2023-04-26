@@ -11,17 +11,17 @@ const StyledHeader = styled.header`
     display: flex;
     height: 14px;
     font-size: 9px;
-    color: #FFFFFF;
+    color: #ffffff;
     background: var(--green);
     border-radius: 100px;
     justify-content: center;
     align-items: center;
     line-height: 0;
     margin: 0;
-    padding: 0 .285rem;
+    padding: 0 0.285rem;
     position: absolute;
     top: -6.5px;
-    left: .7rem;
+    left: 0.7rem;
   }
 `;
 

@@ -40,10 +40,10 @@ const StyledCheckout = styled.div`
     padding-block: 10px;
     font-size: 14px;
     width: 100%;
-    transition: background-color .18s;
+    transition: background-color 0.18s;
 
     &:hover {
-      background-color: #03A57C;
+      background-color: #03a57c;
 
       &:not(:disabled) {
         cursor: pointer;

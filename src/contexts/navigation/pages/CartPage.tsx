@@ -1,8 +1,8 @@
-import React from "react";
+import React, { FC } from "react";
 
 import CartView from "../../../modules/cart";
 
-const CartPage = () => {
+const CartPage: FC = () => {
   return <CartView />;
 };
 

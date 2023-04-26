@@ -55,7 +55,6 @@ const StyledCartView = styled.div`
       background: #555;
     }
 
-
     margin-top: 24px;
     line-height: 150%;
     letter-spacing: 0.5px;
@@ -68,7 +67,7 @@ const StyledCartView = styled.div`
       background-color: #fff;
     }
 
-    @media screen and  (min-width: 905px) {
+    @media screen and (min-width: 905px) {
       padding: 0.35rem 1.4rem 0;
       border: 1px solid var(--grey2);
       border-radius: 4px;
@@ -87,7 +86,7 @@ const StyledCartView = styled.div`
       justify-content: center;
       align-items: center;
 
-      @media screen and  (min-width: 905px) {
+      @media screen and (min-width: 905px) {
         opacity: 0.75;
         transition: opacity 0.18s;
 

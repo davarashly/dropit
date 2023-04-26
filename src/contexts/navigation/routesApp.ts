@@ -2,7 +2,7 @@ interface GetProductProps {
   productId: string;
 }
 
-const routesApp = {
+const routesApp: Record<string, (args?: any) => string> = {
   getHome: () => "/",
   getCatalog: () => `/catalog`,
   getProduct: ({ productId }: GetProductProps) => `/catalog/${productId}`,

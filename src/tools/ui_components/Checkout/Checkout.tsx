@@ -6,7 +6,7 @@ interface Props {
   shippingPrice: number;
   subTotal: number;
   total: number;
-  showModal: () => void;
+  checkout: () => void;
   disabled?: boolean;
 }
 
@@ -14,7 +14,7 @@ const Checkout: FC<Props> = ({
   shippingPrice,
   subTotal,
   total,
-  showModal,
+  checkout,
   disabled,
 }) => {
   return (
@@ -52,7 +52,7 @@ const Checkout: FC<Props> = ({
           </p>
         </div>
       </div>
-      <button disabled={disabled} onClick={disabled ? () => {} : showModal}>
+      <button disabled={disabled} onClick={disabled ? undefined : checkout}>
         Checkout
       </button>
     </StyledCheckout>

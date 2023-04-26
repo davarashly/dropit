@@ -2,7 +2,7 @@ import React, { FC } from "react";
 
 import IconComponent from "./components/IconComponent";
 
-const DeleteFromCartIcon: FC = (props) => {
+const DeleteFromCartIcon: FC = () => {
   return (
     <IconComponent
       d={
@@ -12,7 +12,7 @@ const DeleteFromCartIcon: FC = (props) => {
   );
 };
 
-const DeleteFromCartIconForwarded = React.forwardRef((props, ref) => (
+const DeleteFromCartIconForwarded = React.forwardRef((props) => (
   <DeleteFromCartIcon {...props} />
 ));
 

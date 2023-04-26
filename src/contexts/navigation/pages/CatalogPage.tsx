@@ -1,8 +1,8 @@
-import React from "react";
+import React, { FC } from "react";
 
 import CatalogView from "../../../modules/catalog";
 
-const CatalogPage = () => {
+const CatalogPage: FC = () => {
   return <CatalogView />;
 };
 

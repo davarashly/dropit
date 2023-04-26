@@ -1,8 +1,8 @@
-import React from "react";
+import React, { FC } from "react";
 
 import HomeView from "../../../modules/home";
 
-const HomePage = () => {
+const HomePage: FC = () => {
   return <HomeView />;
 };
 

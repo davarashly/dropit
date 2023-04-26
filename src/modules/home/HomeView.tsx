@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { Link } from "react-router-dom";
 
 import routesApp from "../../contexts/navigation/routesApp";
@@ -6,7 +6,7 @@ import DropitLogo from "../../tools/assets/logo-dropit-business.svg";
 
 import StyledHomeView from "./StyledHomeView";
 
-const HomeView = () => {
+const HomeView: FC = () => {
   return (
     <StyledHomeView>
       <div className="HomeView__header">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 
 interface Props {
   d: string | string[];
@@ -7,12 +7,12 @@ interface Props {
   color?: string;
 }
 
-const IconComponent = ({
+const IconComponent: FC<Props> = ({
   d,
   width: widthProp,
   height: heightProp,
   color,
-}: Props) => {
+}) => {
   const width = typeof widthProp === "number" ? widthProp : 18;
   const height = typeof heightProp === "number" ? heightProp : 18;
   const paths = Array.isArray(d) ? d : [d];

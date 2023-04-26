@@ -7,9 +7,18 @@ import { DeleteFromCartIconForwarded } from "../icons/IconDeleteFromCart";
 interface Props {
   isVisible: boolean;
   hideModal: () => void;
+  title: string;
+  description: string;
+  buttonText: string;
 }
 
-const ModalWindow: FC<Props> = ({ isVisible, hideModal }) => {
+const ModalWindow: FC<Props> = ({
+  isVisible,
+  hideModal,
+  title,
+  description,
+  buttonText,
+}) => {
   const closeModal = () => {
     hideModal();
   };
@@ -25,10 +34,10 @@ const ModalWindow: FC<Props> = ({ isVisible, hideModal }) => {
             </div>
           </Tooltip>
           <div>
-            <div className="title">Checkout completed</div>
-            <p>Thanks for buying, see you soon!</p>
+            <div className="title">{title}</div>
+            <p>{description}</p>
           </div>
-          <button onClick={closeModal}>See Ya</button>
+          <button onClick={closeModal}>{buttonText}</button>
         </div>
       </div>
     </StyledModal>
